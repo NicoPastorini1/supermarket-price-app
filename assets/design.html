@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PriceWise - Search Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec5b",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102216",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 md:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-slate-900 dark:text-slate-100">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-900">payments</span>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">PriceWise</h2>
+</div>
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Deals</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">My Lists</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 md:gap-8">
+<label class="flex flex-col min-w-40 h-10 max-w-64 flex-1 md:flex-none">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-100 dark:bg-slate-800 border border-transparent focus-within:border-primary">
+<div class="text-slate-500 flex items-center justify-center pl-4">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full min-w-0 flex-1 border-none bg-transparent focus:outline-0 focus:ring-0 text-slate-900 dark:text-slate-100 px-4 pl-2 text-base font-normal placeholder:text-slate-500" placeholder="Search milk, bread, eggs..." value="Milk 1L"/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-slate-700 dark:text-slate-300">shopping_cart</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-slate-700 dark:text-slate-300">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Layout Content -->
+<main class="flex-1 flex flex-col md:flex-row max-w-[1440px] mx-auto w-full px-4 md:px-10 py-6 gap-8">
+<!-- Sidebar Filters -->
+<aside class="w-full md:w-64 shrink-0 flex flex-col gap-6">
+<div class="bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold">Filters</h3>
+<button class="text-xs font-semibold text-primary uppercase tracking-wider">Reset</button>
+</div>
+<div class="space-y-8">
+<!-- Supermarkets -->
+<div>
+<h4 class="text-sm font-bold mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">storefront</span> Supermarkets
+                                </h4>
+<div class="space-y-2">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm group-hover:text-primary transition-colors">Whole Foods</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm group-hover:text-primary transition-colors">Lidl</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-slate-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm group-hover:text-primary transition-colors">Aldi</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-slate-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm group-hover:text-primary transition-colors">Tesco</span>
+</label>
+</div>
+</div>
+<!-- Categories -->
+<div>
+<h4 class="text-sm font-bold mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">category</span> Categories
+                                </h4>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-2 rounded-lg bg-primary/10 border border-primary/20">
+<span class="text-sm font-medium">Dairy &amp; Eggs</span>
+<span class="material-symbols-outlined text-sm">close</span>
+</div>
+<a class="block text-sm text-slate-500 hover:text-primary transition-colors p-2" href="#">Fresh Food</a>
+<a class="block text-sm text-slate-500 hover:text-primary transition-colors p-2" href="#">Pantry</a>
+</div>
+</div>
+<!-- Price Range -->
+<div>
+<h4 class="text-sm font-bold mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">payments</span> Price Range
+                                </h4>
+<div class="flex items-center gap-2 mt-4">
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm px-2 py-1" placeholder="Min" type="text"/>
+<span class="text-slate-400">-</span>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm px-2 py-1" placeholder="Max" type="text"/>
+</div>
+</div>
+<!-- Brand -->
+<div>
+<h4 class="text-sm font-bold mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">sell</span> Brand
+                                </h4>
+<div class="space-y-2">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-slate-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm group-hover:text-primary transition-colors">Organic Valley</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-slate-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm group-hover:text-primary transition-colors">Horizon</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-slate-300 text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm group-hover:text-primary transition-colors">Store Brand</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Search Results Content -->
+<div class="flex-1">
+<div class="mb-6">
+<div class="flex items-center gap-2 text-sm text-slate-500 mb-2">
+<a class="hover:text-primary" href="#">Home</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span>Search Results</span>
+</div>
+<h1 class="text-2xl font-bold">Search results for "Milk 1L"</h1>
+<p class="text-sm text-slate-500 mt-1">Showing 12 results from 4 supermarkets</p>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-2 mb-8 overflow-x-auto pb-2 no-scrollbar">
+<button class="flex items-center gap-1.5 px-4 py-1.5 bg-primary/20 border border-primary/30 rounded-full text-sm font-medium">
+                            Dairy <span class="material-symbols-outlined text-base">close</span>
+</button>
+<button class="flex items-center gap-1.5 px-4 py-1.5 bg-slate-200 dark:bg-slate-800 border border-transparent rounded-full text-sm font-medium">
+                            Price: Low to High <span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+<button class="flex items-center gap-1.5 px-4 py-1.5 bg-slate-200 dark:bg-slate-800 border border-transparent rounded-full text-sm font-medium">
+                            Discount <span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+</div>
+<!-- Results List -->
+<div class="grid grid-cols-1 gap-6">
+<!-- Product Card 1 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex flex-col lg:flex-row">
+<!-- Image and basic info -->
+<div class="p-6 flex flex-row lg:flex-col items-center lg:items-start gap-6 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800 w-full lg:w-72">
+<div class="w-32 h-32 lg:w-48 lg:h-48 rounded-lg bg-slate-50 dark:bg-slate-800 flex items-center justify-center p-4">
+<img alt="Whole Milk Carton 1L" class="max-w-full max-h-full object-contain" data-alt="Classic white milk carton 1 liter size" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcNFMwUv1B0Eu5ffLVv59dUz5Cad_Svjkzz6-OIX06Y_c_w-u6g_0pbAPRKiCT-XdqFGmzei4r9xqCZIAxSdApLVSHdgAJ_CxgU__8tW7YajJ3FImA7TtncQZdTHxpLzvuiX001S-U1Tmoi6tETdDC5r1wESgjLV_1XdXsTc5AfX2_rMXptiYjo1-CBPOaOHLxe7Ur8nI_0CplptKKTmpwFBIp0ZQYV7HGu5Ov-2lCh5k4DJ4HHHahHEJu99HJ4-N6P-_MFThsdK4"/>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Store Brand</p>
+<h3 class="text-lg font-bold leading-tight">Whole Milk 3.5% Fat, 1L</h3>
+<p class="text-sm text-slate-500 mt-1">Freshly pasteurized milk from local farms.</p>
+<button class="mt-4 flex items-center gap-2 text-primary font-bold text-sm hover:underline">
+<span class="material-symbols-outlined text-lg">list</span>
+                                            Add to My List
+                                        </button>
+</div>
+</div>
+<!-- Comparison Table -->
+<div class="flex-1 p-6">
+<h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-base">compare_arrows</span> Price Comparison
+                                    </h4>
+<div class="overflow-x-auto">
+<table class="w-full border-separate border-spacing-y-2">
+<thead>
+<tr class="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">
+<th class="pb-2">Supermarket</th>
+<th class="pb-2">Price</th>
+<th class="pb-2">Status</th>
+<th class="pb-2 text-right">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="bg-slate-50 dark:bg-slate-800/50 rounded-lg group transition-colors hover:bg-primary/5">
+<td class="py-3 px-4 rounded-l-lg border-y border-l border-transparent">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-600 text-sm">store</span>
+</div>
+<span class="font-semibold text-sm">Lidl</span>
+</div>
+</td>
+<td class="py-3 px-2 border-y border-transparent">
+<span class="text-lg font-bold">0.89€</span>
+</td>
+<td class="py-3 px-2 border-y border-transparent">
+<span class="px-3 py-1 bg-primary text-slate-900 text-[10px] font-bold rounded-full uppercase">Cheapest</span>
+</td>
+<td class="py-3 px-4 rounded-r-lg border-y border-r border-transparent text-right">
+<button class="px-4 py-1.5 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-xs font-bold rounded hover:opacity-90">Store Link</button>
+</td>
+</tr>
+<tr class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg group transition-colors hover:bg-slate-50 dark:hover:bg-slate-800">
+<td class="py-3 px-4 rounded-l-lg border-y border-l border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-red-600 text-sm">store</span>
+</div>
+<span class="font-semibold text-sm">Aldi</span>
+</div>
+</td>
+<td class="py-3 px-2 border-y border-slate-200 dark:border-slate-800">
+<span class="text-lg font-medium">0.95€</span>
+</td>
+<td class="py-3 px-2 border-y border-slate-200 dark:border-slate-800">
+<span class="text-xs text-slate-400 italic">In Stock</span>
+</td>
+<td class="py-3 px-4 rounded-r-lg border-y border-r border-slate-200 dark:border-slate-800 text-right">
+<button class="px-4 py-1.5 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold rounded hover:bg-slate-300">Store Link</button>
+</td>
+</tr>
+<tr class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg group transition-colors hover:bg-slate-50 dark:hover:bg-slate-800">
+<td class="py-3 px-4 rounded-l-lg border-y border-l border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-green-600 text-sm">store</span>
+</div>
+<span class="font-semibold text-sm">Whole Foods</span>
+</div>
+</td>
+<td class="py-3 px-2 border-y border-slate-200 dark:border-slate-800">
+<span class="text-lg font-medium">1.25€</span>
+</td>
+<td class="py-3 px-2 border-y border-slate-200 dark:border-slate-800">
+<span class="text-xs text-slate-400 italic">High Price</span>
+</td>
+<td class="py-3 px-4 rounded-r-lg border-y border-r border-slate-200 dark:border-slate-800 text-right">
+<button class="px-4 py-1.5 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold rounded hover:bg-slate-300">Store Link</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow opacity-90">
+<div class="flex flex-col lg:flex-row">
+<div class="p-6 flex flex-row lg:flex-col items-center lg:items-start gap-6 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800 w-full lg:w-72">
+<div class="w-32 h-32 lg:w-48 lg:h-48 rounded-lg bg-slate-50 dark:bg-slate-800 flex items-center justify-center p-4">
+<img alt="Organic Milk 1L" class="max-w-full max-h-full object-contain filter saturate-50" data-alt="Eco-friendly green organic milk carton" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCY_dScuG0EdOZMfWXcVqqJdVaX1eOYDxdjOQ1AwrSztPE9nXmXEm0FpZhyyJMlNtXomWmWAV8gjsHSaQ4FFKib8TliViR_rKAf3AudLcxgStdIWGmY0hvnctJaAx809KhiZioKgObFTDIwDBzGFPo8NDlSgchohkJGJvC26e6Ua7WcEJJpj8VAGatKfESf-0qJtzKubg0a8pfHD0de92c8DEJ4V34gmpMEmFhSWOxHvObKtXisTE6CTlc_Q9UppBxq_jrilHCH13I"/>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Organic Valley</p>
+<h3 class="text-lg font-bold leading-tight">Organic Whole Milk 1L</h3>
+<p class="text-sm text-slate-500 mt-1">100% Grass-fed organic dairy milk.</p>
+<button class="mt-4 flex items-center gap-2 text-primary font-bold text-sm hover:underline">
+<span class="material-symbols-outlined text-lg">list</span>
+                                            Add to My List
+                                        </button>
+</div>
+</div>
+<div class="flex-1 p-6">
+<h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-base">compare_arrows</span> Price Comparison
+                                    </h4>
+<div class="overflow-x-auto">
+<table class="w-full border-separate border-spacing-y-2">
+<tbody>
+<tr class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg group transition-colors hover:bg-slate-50 dark:hover:bg-slate-800">
+<td class="py-3 px-4 rounded-l-lg border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-green-600 text-sm">store</span>
+</div>
+<span class="font-semibold text-sm">Whole Foods</span>
+</div>
+</td>
+<td class="py-3 px-2 border-y border-slate-200 dark:border-slate-800">
+<span class="text-lg font-bold text-primary">1.65€</span>
+</td>
+<td class="py-3 px-2 border-y border-slate-200 dark:border-slate-800">
+<span class="px-3 py-1 bg-primary text-slate-900 text-[10px] font-bold rounded-full uppercase">Cheapest</span>
+</td>
+<td class="py-3 px-4 rounded-r-lg border-y border-r border-slate-200 dark:border-slate-800 text-right">
+<button class="px-4 py-1.5 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-xs font-bold rounded hover:opacity-90">Store Link</button>
+</td>
+</tr>
+<tr class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg group transition-colors hover:bg-slate-50 dark:hover:bg-slate-800">
+<td class="py-3 px-4 rounded-l-lg border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-600 text-sm">store</span>
+</div>
+<span class="font-semibold text-sm">Lidl</span>
+</div>
+</td>
+<td class="py-3 px-2 border-y border-slate-200 dark:border-slate-800">
+<span class="text-lg font-medium">1.79€</span>
+</td>
+<td class="py-3 px-2 border-y border-slate-200 dark:border-slate-800">
+<span class="text-xs text-slate-400 italic">In Stock</span>
+</td>
+<td class="py-3 px-4 rounded-r-lg border-y border-r border-slate-200 dark:border-slate-800 text-right">
+<button class="px-4 py-1.5 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold rounded hover:bg-slate-300">Store Link</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex justify-center">
+<nav class="flex items-center gap-1">
+<button class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 disabled:opacity-30">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-lg bg-primary text-slate-900 font-bold">1</button>
+<button class="w-10 h-10 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 font-medium">2</button>
+<button class="w-10 h-10 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 font-medium">3</button>
+<span class="px-2">...</span>
+<button class="w-10 h-10 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 font-medium">12</button>
+<button class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</nav>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-10 mt-12">
+<div class="max-w-[1440px] mx-auto px-6 md:px-10">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-3 text-slate-900 dark:text-slate-100 mb-4">
+<div class="size-6 bg-primary rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-900 text-sm">payments</span>
+</div>
+<h2 class="text-lg font-bold leading-tight">PriceWise</h2>
+</div>
+<p class="text-sm text-slate-500">Comparing millions of products across all your favorite supermarkets to save you money every day.</p>
+</div>
+<div>
+<h4 class="font-bold text-sm mb-4">Company</h4>
+<ul class="text-sm text-slate-500 space-y-2">
+<li><a class="hover:text-primary" href="#">About Us</a></li>
+<li><a class="hover:text-primary" href="#">How it works</a></li>
+<li><a class="hover:text-primary" href="#">Supermarkets</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-sm mb-4">Support</h4>
+<ul class="text-sm text-slate-500 space-y-2">
+<li><a class="hover:text-primary" href="#">Help Center</a></li>
+<li><a class="hover:text-primary" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-sm mb-4">Subscribe to savings</h4>
+<p class="text-xs text-slate-500 mb-4">Get the best deals delivered to your inbox weekly.</p>
+<div class="flex gap-2">
+<input class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-3 py-2 text-sm" placeholder="Email" type="email"/>
+<button class="bg-primary text-slate-900 font-bold px-4 py-2 rounded-lg text-sm">Join</button>
+</div>
+</div>
+</div>
+<div class="border-t border-slate-200 dark:border-slate-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-xs text-slate-400">© 2024 PriceWise Supermarket Comparison. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">social_leaderboard</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">language</span></a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>
