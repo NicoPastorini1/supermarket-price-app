@@ -1,66 +1,66 @@
 # Supermarket Price Scraper
 
-Web application to scrape and analyze supermarket prices. Built with Python and Streamlit.
+Aplicación web para raspado y análisis de precios de supermercados. Construida con Python y Streamlit.
 
-## Features
+## Características
 
-- **Price Scraper**: Automated scraping of product prices from supermarkets
-- **Product Browser**: Search and filter products by name, brand, category
-- **Price History**: Track price changes over time
-- **Dashboard**: Statistical analysis of prices
-- **Inflation Analysis**: Track price variations and inflation metrics
-- **Execution Logs**: Monitor scraper performance
+- **Price Scraper**: Scraping automatizado de precios de productos de supermercados
+- **Navegador de Productos**: Buscar y filtrar productos por nombre, marca, categoría
+- **Historial de Precios**: Seguimiento de cambios de precios a lo largo del tiempo
+- **Dashboard**: Análisis estadístico de precios
+- **Análisis de Inflación**: Seguimiento de variaciones de precios y métricas de inflación
+- **Logs de Ejecución**: Monitoreo del rendimiento del scraper
 
-## Installation
+## Instalación
 
 ```bash
-# Create virtual environment
+# Crear entorno virtual
 python -m venv venv
 
-# Activate virtual environment
+# Activar entorno virtual
 # Windows:
 venv\Scripts\activate
 # Linux/Mac:
 source venv/bin/activate
 
-# Install dependencies
+# Instalar dependencias
 pip install -r requirements.txt
 ```
 
-## Usage
+## Uso
 
 ```bash
-# Run the Streamlit app
+# Ejecutar la app Streamlit
 streamlit run app.py
 ```
 
-The application will open at `http://localhost:8501`
+La aplicación se abrirá en `http://localhost:8501`
 
-## Project Structure
+## Estructura del Proyecto
 
 ```
 .
-├── app.py                 # Main Streamlit application
-├── scraper/               # Scraping modules
-│   ├── categorias.py      # Category fetching
-│   ├── productos.py       # Product scraping
-│   ├── main.py            # Main scraper execution
-│   ├── logs.py            # Execution logging
-│   └── analisis_inflacion.py  # Inflation analysis
-├── assets/                # Static assets
-├── output/                # Scraped data output
-├── requirements.txt      # Python dependencies
-└── .gitignore            # Git ignore rules
+├── app.py                 # Aplicación principal de Streamlit
+├── scraper/               # Módulos de scraping
+│   ├── categorias.py      # Obtención de categorías
+│   ├── productos.py       # Scraping de productos
+│   ├── main.py            # Ejecución principal del scraper
+│   ├── logs.py            # Registro de ejecuciones
+│   └── analisis_inflacion.py  # Análisis de inflación
+├── assets/                # Archivos estáticos
+├── output/                # Datos extraídos
+├── requirements.txt      # Dependencias de Python
+└── .gitignore            # Reglas de Git ignore
 ```
 
-## Tech Stack
+## Tecnologías
 
-- **Streamlit**: Web UI framework
-- **BeautifulSoup4**: HTML parsing
-- **Pandas**: Data manipulation
-- **Altair**: Data visualization
-- **Requests**: HTTP requests
+- **Streamlit**: Framework de UI web
+- **BeautifulSoup4**: Parsing de HTML
+- **Pandas**: Manipulación de datos
+- **Altair**: Visualización de datos
+- **Requests**: Peticiones HTTP
 
-## License
+## Licencia
 
 MIT
