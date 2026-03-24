@@ -14,8 +14,35 @@ warnings.filterwarnings('ignore')
 
 OUTPUT_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "output")
 
+try:
+    from scraper.supabase_client import obtener_productos_desde_supabase
+    SUPABASE_DISPONIBLE = True
+except:
+    SUPABASE_DISPONIBLE = False
+
 
 def cargar_todos_los_datos() -> Tuple[pd.DataFrame, List[str]]:
+    all_records = []
+    fechas = []
+    
+    if SUPABASE_DISPONIBLE and os.getenv("SUPABASE_URL"):
+        try:
+            productos = obtener_productos_desde_supabase()
+            if productos:
+                for p in productos:
+                    p["productId"] = p.get("product_id")
+                    fecha = p.get("fecha_extraccion", "")[:10] if p.get("fecha_extraccion") else ""
+                    p["fecha_extraccion"] = fecha
+                    all_records.append(p)
+                    if fecha and fecha not in fechas:
+                        fechas.append(fecha)
+                
+                fechas.sort()
+                if all_records:
+                    return pd.DataFrame(all_records), fechas
+        except Exception:
+            pass
+    
     search_dirs = [OUTPUT_DIR, "."]
     
     json_files = []
@@ -28,9 +55,6 @@ def cargar_todos_los_datos() -> Tuple[pd.DataFrame, List[str]]:
                     json_files.append((filepath, fecha))
     
     json_files.sort(key=lambda x: x[1])
-    
-    all_records = []
-    fechas = []
     
     for filepath, fecha in json_files:
         try:

@@ -26,6 +26,12 @@ from scraper.analisis_inflacion import (
     calcular_top_variaciones
 )
 
+try:
+    from scraper.supabase_client import obtener_productos_desde_supabase
+    SUPABASE_DISPONIBLE = True
+except:
+    SUPABASE_DISPONIBLE = False
+
 st.set_page_config(page_title="Price Scraper", layout="wide", page_icon="💰")
 
 OUTPUT_DIR = "output"
@@ -53,7 +59,21 @@ def get_latest_json_file():
 
 @st.cache_data(ttl=0)
 def load_all_products(use_latest_only=True):
-    """Carga productos desde JSON. Si use_latest_only=True, usa solo el archivo más reciente."""
+    """Carga productos desde Supabase (prioridad) o JSON local como fallback."""
+    if SUPABASE_DISPONIBLE and os.getenv("SUPABASE_URL"):
+        try:
+            if use_latest_only:
+                productos = obtener_productos_desde_supabase(tienda="dia")
+                if productos:
+                    return productos, {"dia": productos}
+            else:
+                productos = obtener_productos_desde_supabase()
+                if productos:
+                    tiendas = {"dia": [p for p in productos if p.get("tienda") == "dia"]}
+                    return productos, tiendas
+        except Exception as e:
+            st.warning(f"Error conectando a Supabase: {e}. Usando datos locales.")
+    
     if use_latest_only:
         latest_file = get_latest_json_file()
         if not latest_file:
@@ -115,7 +135,32 @@ def load_all_products(use_latest_only=True):
 
 @st.cache_data(ttl=0)
 def load_product_history():
-    """Carga el historial de precios de todos los archivos JSON."""
+    """Carga el historial de precios desde Supabase (prioridad) o JSON local como fallback."""
+    historial = {}
+    
+    if SUPABASE_DISPONIBLE and os.getenv("SUPABASE_URL"):
+        try:
+            productos = obtener_productos_desde_supabase()
+            if productos:
+                for p in productos:
+                    pid = p.get("product_id") or p.get("productId")
+                    if pid:
+                        fecha = p.get("fecha_extraccion", "")[:10] if p.get("fecha_extraccion") else ""
+                        if pid not in historial:
+                            historial[pid] = []
+                        historial[pid].append({
+                            "fecha": fecha,
+                            "precio": p.get("precio"),
+                            "nombre": p.get("nombre")
+                        })
+                
+                for pid in historial:
+                    historial[pid].sort(key=lambda x: x["fecha"])
+                
+                return historial
+        except Exception as e:
+            st.warning(f"Error conectando a Supabase para historial: {e}")
+    
     search_dirs = [OUTPUT_DIR, "."]
     
     json_files = []
@@ -126,8 +171,6 @@ def load_product_history():
                     filepath = os.path.join(d, f)
                     fecha = f.replace("productos_", "").replace(".json", "")
                     json_files.append((filepath, fecha))
-    
-    historial = {}
     
     for filepath, fecha in json_files:
         with open(filepath, "r", encoding="utf-8") as f:
@@ -151,6 +194,8 @@ def load_product_history():
     
     for pid in historial:
         historial[pid].sort(key=lambda x: x["fecha"])
+    
+    return historial
     
     return historial
 
