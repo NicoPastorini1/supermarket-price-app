@@ -1,7 +1,7 @@
 """
 main.py
 Orquesta el scraping completo de Supermercados DIA Argentina.
-Resultado: output/productos_YYYY-MM-DD.json y output/productos_YYYYMMDD_HHMMSS.csv
+Resultado: output/productos_YYYY-MM-DD.json y guarda en Supabase
 """
 
 import time
@@ -10,6 +10,7 @@ from datetime import datetime
 from categorias import get_categorias
 from productos import get_productos_categoria, guardar_productos
 from logs import guardar_log
+from supabase_client import guardar_productos_supabase, eliminar_productos_fecha
 
 OUTPUT_DIR = "output"
 TIENDA = "dia"
@@ -46,10 +47,20 @@ def main():
         
         duracion = time.time() - inicio
         
+        print("\n[3/3] Guardando en Supabase...")
+        supabase_guardado = False
+        if os.getenv("SUPABASE_KEY"):
+            try:
+                eliminar_productos_fecha(fecha_hoy, TIENDA)
+                supabase_guardado = guardar_productos_supabase(todos)
+            except Exception as e:
+                print(f"  → Error Supabase: {e}")
+        
         print("\n" + "=" * 50)
         print(f"✓ Total productos únicos: {len(todos)}")
         print(f"✓ JSON: {json_path}")
-        print(f"✓ CSV: {csv_path}")
+        if supabase_guardado:
+            print(f"✓ Supabase: ✓")
         print(f"✓ Duración total: {duracion:.1f}s")
         print("=" * 50)
         
