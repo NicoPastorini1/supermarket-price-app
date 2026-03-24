@@ -5,3 +5,4 @@ pandas
 lxml
 supabase
 psycopg2-binary
+python-dotenv

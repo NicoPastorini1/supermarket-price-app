@@ -7,7 +7,10 @@ import sys
 import time as time_module
 from datetime import datetime
 from functools import lru_cache
+from dotenv import load_dotenv
 import altair as alt
+
+load_dotenv()
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from scraper.categorias import get_categorias
